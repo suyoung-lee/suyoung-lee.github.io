@@ -1,253 +1,551 @@
-<!DOCTYPE HTML>
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suyoung Lee</title>
+<meta name="author" content="Suyoung Lee">
+<link rel="icon" type="image/png" href="images/SY.png">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --paper:#f5f3ec;--paper-warm:#ece8dc;--ink:#1a1a18;--ink-soft:#3a3a36;
+  --moss:#5d7042;--moss-deep:#465634;--moss-soft:rgba(93,112,66,.12);
+  --warm-gray:#9a9588;--rule:rgba(26,26,24,.08);
+  --font-display:'Fraunces',Georgia,serif;
+  --font-body:'Inter',system-ui,sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,monospace;
+}
+html{scroll-behavior:smooth;font-size:17px}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-body);font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased}
+::selection{background:var(--moss);color:var(--paper)}
 
-  <title>Suyoung Lee</title>
+/* ── Layout ─────────────────────────────────────────── */
+.wrap{max-width:1080px;margin:0 auto;padding:0 48px}
+section{padding:120px 0;border-top:1px solid var(--rule)}
+section:first-of-type{border-top:0}
 
-  <meta name="author" content="Suyoung Lee">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+/* ── Type ───────────────────────────────────────────── */
+h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:1.1;letter-spacing:-.015em}
+h1{font-size:clamp(3rem,7vw,5.4rem);font-weight:300}
+h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:.4em}
+h3{font-size:1.4rem;margin-bottom:.3em}
+p{font-size:1.06rem;color:var(--ink-soft);max-width:62ch}
+a{color:inherit;text-decoration:none;transition:color .2s}
+a:hover{color:var(--moss)}
+em{font-family:var(--font-display);font-style:italic;font-weight:400;color:var(--moss-deep)}
 
-  <link rel="stylesheet" type="text/css" href="stylesheet.css">
-  <link rel="icon" type="image/png" href="images/SY.png">
+.label{font-family:var(--font-mono);font-size:.78rem;font-weight:500;text-transform:uppercase;letter-spacing:.16em;color:var(--moss);display:inline-block;margin-bottom:18px}
+.label::before{content:'§ ';opacity:.5}
+.divider{width:42px;height:2px;background:var(--moss);margin:14px 0 26px}
+
+/* ── Nav ────────────────────────────────────────────── */
+nav.top{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(245,243,236,.85);backdrop-filter:saturate(140%) blur(12px);-webkit-backdrop-filter:saturate(140%) blur(12px);border-bottom:1px solid var(--rule);transition:transform .3s,background .3s}
+nav.top.hidden{transform:translateY(-100%)}
+.nav-inner{max-width:1080px;margin:0 auto;padding:14px 48px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:var(--font-display);font-size:1.15rem;font-weight:500;letter-spacing:-.01em}
+.brand span{color:var(--moss)}
+.nav-links{display:flex;gap:28px;font-family:var(--font-mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.12em}
+.nav-links a{color:var(--ink-soft);position:relative;padding:4px 0}
+.nav-links a.active{color:var(--moss)}
+.nav-links a.active::after{content:'';position:absolute;left:0;right:0;bottom:-2px;height:1px;background:var(--moss)}
+@media (max-width:680px){.nav-links{display:none}}
+
+/* ── Hero ──────────────────────────────────────────── */
+.hero{background:var(--ink);color:var(--paper);min-height:100vh;display:flex;align-items:center;padding:160px 0 100px;position:relative;overflow:hidden;border-top:0}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:80px 80px;pointer-events:none}
+.hero::after{content:'S';position:absolute;font-family:var(--font-display);font-weight:300;font-size:42rem;line-height:.8;color:rgba(255,255,255,.025);right:-60px;bottom:-180px;pointer-events:none;font-style:italic}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.6fr 1fr;gap:80px;align-items:center}
+@media (max-width:840px){.hero .wrap{grid-template-columns:1fr;gap:48px}}
+.hero h1{color:var(--paper);font-style:italic;margin:18px 0 30px}
+.hero h1 .last{font-style:normal;font-weight:400}
+.hero .label{color:var(--moss)}
+.hero p{color:#c4c0b3;font-size:1.15rem;line-height:1.7;max-width:54ch}
+.hero p strong{color:var(--paper);font-weight:500}
+.hero .links{margin-top:36px;display:flex;flex-wrap:wrap;gap:0;font-family:var(--font-mono);font-size:.85rem;text-transform:uppercase;letter-spacing:.1em}
+.hero .links a{padding:10px 0;margin-right:24px;color:#c4c0b3;border-bottom:1px solid transparent}
+.hero .links a:hover{color:var(--moss);border-bottom-color:var(--moss)}
+.hero .portrait{justify-self:end;width:100%;max-width:280px;aspect-ratio:1;border-radius:50%;overflow:hidden;border:1px solid rgba(255,255,255,.1);position:relative}
+.hero .portrait img{width:100%;height:100%;object-fit:cover;filter:grayscale(.3) contrast(1.05)}
+.hero .stamp{position:absolute;bottom:40px;right:48px;font-family:var(--font-mono);font-size:.7rem;color:rgba(255,255,255,.25);letter-spacing:.15em;text-transform:uppercase}
+
+/* ── About / Now ───────────────────────────────────── */
+.about-grid{display:grid;grid-template-columns:1fr 2fr;gap:60px}
+@media (max-width:760px){.about-grid{grid-template-columns:1fr;gap:24px}}
+.about p+p{margin-top:1em}
+
+.now-list{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:36px}
+@media (max-width:680px){.now-list{grid-template-columns:1fr}}
+.now-card{padding:24px 26px;background:rgba(255,255,255,.4);border:1px solid var(--rule);border-radius:8px;transition:border-color .25s,transform .25s}
+.now-card:hover{border-color:var(--moss);transform:translateY(-2px)}
+.now-card .meta{font-family:var(--font-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.12em;color:var(--moss);margin-bottom:10px}
+.now-card h3{font-size:1.2rem;margin-bottom:6px}
+.now-card p{font-size:.95rem;color:var(--ink-soft)}
+
+/* ── Featured project (Open Source) ────────────────── */
+.featured{background:var(--ink);color:var(--paper);padding:100px 0;border-top:0;position:relative;overflow:hidden}
+.featured::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:64px 64px;pointer-events:none}
+.featured .wrap{position:relative}
+.featured .label{color:var(--moss)}
+.featured h2{color:var(--paper)}
+.feat-grid{display:grid;grid-template-columns:2fr 1fr;gap:60px;margin-top:30px;align-items:center}
+@media (max-width:760px){.feat-grid{grid-template-columns:1fr}}
+.feat-card{padding:36px 40px;border:1px solid rgba(255,255,255,.12);border-radius:10px;background:rgba(255,255,255,.02)}
+.feat-card .tag{display:inline-block;padding:4px 12px;border-radius:20px;background:var(--moss);color:var(--paper);font-family:var(--font-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:18px}
+.feat-card h3{color:var(--paper);font-size:2rem;margin-bottom:14px;font-family:var(--font-display);font-weight:400}
+.feat-card p{color:#c4c0b3;font-size:1.04rem;margin-bottom:24px}
+.feat-card .feat-links{display:flex;gap:0;font-family:var(--font-mono);font-size:.82rem;text-transform:uppercase;letter-spacing:.1em}
+.feat-card .feat-links a{padding:10px 0;margin-right:22px;color:var(--paper);border-bottom:1px solid var(--moss);transition:color .2s,border-color .2s}
+.feat-card .feat-links a:hover{color:var(--moss)}
+.feat-side{font-family:var(--font-display);text-align:right}
+.feat-side .num{font-size:5rem;font-weight:300;color:var(--moss);line-height:1;font-style:italic}
+.feat-side .num-label{font-family:var(--font-mono);font-size:.74rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.14em;margin-top:8px}
+
+/* ── Publications ──────────────────────────────────── */
+.pub-list{display:flex;flex-direction:column;gap:0}
+.pub{display:grid;grid-template-columns:200px 1fr;gap:36px;padding:32px 0;border-bottom:1px solid var(--rule);transition:background .2s}
+.pub:hover{background:rgba(93,112,66,.04)}
+.pub:hover .pub-thumb{border-color:var(--moss)}
+.pub:last-child{border-bottom:0}
+@media (max-width:680px){.pub{grid-template-columns:1fr;gap:18px}}
+.pub-thumb{width:100%;aspect-ratio:4/3;border:1px solid var(--rule);border-radius:6px;overflow:hidden;background:var(--paper-warm);transition:border-color .25s}
+.pub-thumb img{width:100%;height:100%;object-fit:cover}
+.pub-thumb.contain{background:#fff;display:flex;align-items:center;justify-content:center;padding:10px}
+.pub-thumb.contain img{object-fit:contain}
+.pub-meta{font-family:var(--font-mono);font-size:.74rem;color:var(--moss);text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.pub-meta .badge{padding:2px 9px;border-radius:3px;background:var(--moss);color:var(--paper);font-size:.68rem}
+.pub-title{font-family:var(--font-display);font-size:1.35rem;font-weight:500;line-height:1.25;margin-bottom:10px;letter-spacing:-.01em}
+.pub-title a:hover{color:var(--moss)}
+.pub-authors{font-size:.92rem;color:var(--ink-soft);margin-bottom:8px}
+.pub-authors strong{color:var(--ink);font-weight:600}
+.pub-venue{font-family:var(--font-display);font-style:italic;font-size:.96rem;color:var(--ink-soft);margin-bottom:14px}
+.pub-summary{font-size:.95rem;color:var(--ink-soft);max-width:60ch}
+.pub-actions{margin-top:14px;font-family:var(--font-mono);font-size:.76rem;text-transform:uppercase;letter-spacing:.1em}
+.pub-actions a{margin-right:18px;color:var(--moss);border-bottom:1px solid transparent;padding-bottom:2px}
+.pub-actions a:hover{border-bottom-color:var(--moss)}
+
+/* ── Awards & Education ────────────────────────────── */
+.col-2{display:grid;grid-template-columns:1fr 1fr;gap:80px}
+@media (max-width:760px){.col-2{grid-template-columns:1fr;gap:60px}}
+.award-item{padding:18px 0;border-bottom:1px solid var(--rule)}
+.award-item:last-child{border-bottom:0}
+.award-item .year{font-family:var(--font-mono);font-size:.78rem;color:var(--moss);letter-spacing:.1em;margin-bottom:4px}
+.award-item h3{font-size:1.08rem;font-family:var(--font-body);font-weight:600;letter-spacing:0;margin-bottom:4px}
+.award-item h3 a{border-bottom:1px dotted var(--warm-gray);padding-bottom:1px}
+.award-item h3 a:hover{border-bottom-color:var(--moss);border-bottom-style:solid}
+.award-item p{font-size:.9rem;color:var(--ink-soft)}
+
+.edu-line{position:relative;padding-left:24px}
+.edu-line::before{content:'';position:absolute;left:5px;top:8px;bottom:8px;width:1px;background:var(--rule)}
+.edu-item{position:relative;padding:12px 0 18px}
+.edu-item::before{content:'';position:absolute;left:-23px;top:18px;width:11px;height:11px;border-radius:50%;background:var(--paper);border:2px solid var(--moss)}
+.edu-item .when{font-family:var(--font-mono);font-size:.74rem;color:var(--moss);letter-spacing:.1em;margin-bottom:3px}
+.edu-item .what{font-size:.98rem;color:var(--ink);font-weight:500}
+.edu-item .where{font-size:.88rem;color:var(--ink-soft);margin-top:2px}
+.edu-item .where a{border-bottom:1px dotted var(--warm-gray);padding-bottom:1px}
+.edu-item .where a:hover{border-bottom-color:var(--moss);border-bottom-style:solid}
+.hero p a{border-bottom:1px dotted rgba(255,255,255,.3);padding-bottom:1px}
+.hero p a:hover{border-bottom-color:var(--moss);border-bottom-style:solid}
+
+/* ── Coda ──────────────────────────────────────────── */
+.coda{display:grid;grid-template-columns:1fr 1.4fr;gap:64px;align-items:center}
+@media (max-width:760px){.coda{grid-template-columns:1fr;gap:32px}}
+.coda-img{width:100%;aspect-ratio:1;border-radius:8px;overflow:hidden;background:#fff;border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;padding:18px}
+.coda-img img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+.coda-text p{font-size:1.04rem;color:var(--ink-soft);max-width:54ch}
+.coda-text p+p{margin-top:1.1em}
+.coda-text .eq{font-family:var(--font-display);font-style:italic;font-size:1.25rem;color:var(--moss-deep);display:block;margin:.6em 0;letter-spacing:.01em}
+
+/* ── Aside · Hobby ─────────────────────────────────── */
+.aside-card{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center;padding:36px;background:rgba(255,255,255,.5);border:1px solid var(--rule);border-radius:10px;margin-top:30px;transition:border-color .25s}
+.aside-card:hover{border-color:var(--moss)}
+@media (max-width:760px){.aside-card{grid-template-columns:1fr;gap:24px;padding:24px}}
+.aside-text .tag-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.aside-text .tag{display:inline-block;padding:3px 10px;border-radius:20px;background:var(--moss-soft);color:var(--moss-deep);font-family:var(--font-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;font-weight:500}
+.aside-text h3{font-size:1.6rem;margin-bottom:10px;font-family:var(--font-display);font-weight:500}
+.aside-text p{font-size:1rem;color:var(--ink-soft);margin-bottom:18px}
+.aside-text .play-links{display:flex;gap:0;font-family:var(--font-mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.1em}
+.aside-text .play-links a{padding:8px 0;margin-right:22px;color:var(--moss);border-bottom:1px solid var(--moss)}
+.aside-text .play-links a:hover{color:var(--moss-deep);border-bottom-color:var(--moss-deep)}
+.aside-img{width:100%;aspect-ratio:5/3;border-radius:8px;overflow:hidden;background:#1a1a18;border:1px solid var(--rule)}
+.aside-img img{width:100%;height:100%;object-fit:cover}
+
+/* ── Connect / Footer ──────────────────────────────── */
+.connect{background:var(--ink);color:var(--paper);padding:100px 0 60px;border-top:0;position:relative;overflow:hidden}
+.connect::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:80px 80px;pointer-events:none}
+.connect .wrap{position:relative}
+.connect .label{color:var(--moss)}
+.connect h2{color:var(--paper);max-width:18ch;margin-bottom:40px}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;margin-top:30px}
+.contact-item .ct-label{font-family:var(--font-mono);font-size:.72rem;color:var(--warm-gray);text-transform:uppercase;letter-spacing:.12em;margin-bottom:6px}
+.contact-item a,.contact-item span{color:var(--paper);font-size:1rem;border-bottom:1px solid transparent;padding-bottom:1px}
+.contact-item a:hover{border-bottom-color:var(--moss);color:var(--moss)}
+.foot{margin-top:80px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:baseline;font-family:var(--font-mono);font-size:.74rem;color:var(--warm-gray);letter-spacing:.08em;text-transform:uppercase}
+@media (max-width:520px){.foot{flex-direction:column;gap:10px}}
+
+/* ── Reveal animation ──────────────────────────────── */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+</style>
 </head>
 
 <body>
-  <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-    <tr style="padding:0px">
-      <td style="padding:0px">
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr style="padding:0px">
-            <td style="padding:2.5%;width:63%;vertical-align:middle">
-              <p style="text-align:center">
-                <name>Suyoung Lee</name>
-                              </p>
-              
-		<p style="text-align:center"> suyounglee424 [at] gmail [dot] com </p>
-		    <p style="text-align:center"> suyoung.lee [at] krafton [dot] com </p>
-              </p>
-              <p> Welcome to my homepage. I currently work as an ML engineer at the Gameplay AI Team, Krafton. My current interest is building AI agents that can play games {like, with, against} humans.
-				  <br><br>
-		Before joining Krafton, I worked on building LLM agent frameworks at Samsung.
-				  <br>
-		I completed my PhD in Electrical Engineering at KAIST, under the supervision of Prof. <a href="https://sites.google.com/view/youngchulsung">Youngchul Sung</a> and Prof. Sae-Young Chung.
-                My research interest during PhD was in enhancing the practicality of reinforcement learning, including sample efficiency, exploration methods, generalization across unseen tasks, and refining offline reinforcement learning techniques. 
 
-              <p style="text-align:center">
-                <a href="https://scholar.google.com/citations?user=CWbdBy8AAAAJ&hl=en">Google Scholar</a> &nbsp/&nbsp
-                <a href="https://github.com/suyoung-lee/">Github</a> &nbsp/&nbsp
-		<a href="https://github.com/suyoung-lee/suyoung-lee.github.io/raw/main/CV_SuyoungLee.pdf">CV</a> &nbsp/&nbsp
-		<a href="https://github.com/suyoung-lee/suyoung-lee.github.io/raw/main/Defense_SuyoungLee.pdf">Thesis Slides</a>
-              </p>
+<nav class="top" id="topnav">
+  <div class="nav-inner">
+    <a href="#hero" class="brand">Suyoung <span>Lee</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#open-source">Open Source</a>
+      <a href="#publications">Publications</a>
+      <a href="#awards">Awards</a>
+      <a href="#connect">Connect</a>
+    </div>
+  </div>
+</nav>
 
-            </td>
-				<td style="padding:2.5%;width:40%;max-width:40%;vertical-align:middle">
- 					<a href="images/SuyoungLee.jpg">
-    					<img style="width:70%;max-width:70%" alt="profile photo" src="images/SuyoungLee.jpg" class="hoverZoomLink">
- 					 </a>
-				</td>
-          </tr>
-        </tbody></table>
+<!-- ── Hero ─────────────────────────────────────────────── -->
+<section class="hero" id="hero">
+  <div class="wrap">
+    <div>
+      <span class="label">ML Engineer · Krafton AI · Seoul</span>
+      <h1>Suyoung <span class="last">Lee.</span></h1>
+      <p>I build <strong>AI agents that play games</strong> — currently fine-tuning vision-language-action models and running large-scale distributed RL on PUBG at <strong>Krafton</strong>'s Gameplay AI Team.</p>
+      <p style="margin-top:14px">Before Krafton, I built LLM agent frameworks at <strong>Samsung Research</strong>. PhD in EE from <strong>KAIST</strong>, advised by Prof. <a href="https://sites.google.com/view/youngchulsung">Youngchul Sung</a> &amp; Prof. <a href="https://scholar.google.com/citations?user=k-o3JBIAAAAJ&amp;hl=ko&amp;oi=ao">Sae-Young Chung</a>.</p>
+      <div class="links">
+        <a href="https://scholar.google.com/citations?user=CWbdBy8AAAAJ&hl=en">Scholar</a>
+        <a href="https://github.com/suyoung-lee/">GitHub</a>
+        <a href="CV_SuyoungLee.pdf">CV</a>
+        <a href="Defense_SuyoungLee.pdf">Thesis</a>
+      </div>
+    </div>
+    <div class="portrait">
+      <img src="images/SuyoungLee.jpg" alt="Suyoung Lee">
+    </div>
+  </div>
+  <div class="stamp">Updated · 2026</div>
+</section>
 
+<!-- ── About / Now ─────────────────────────────────────── -->
+<section id="about">
+  <div class="wrap reveal">
+    <span class="label">About</span>
+    <div class="about-grid">
+      <div>
+        <h2>Building agents<br>that <em>play</em>.</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="about">
+        <p>My research interests span <strong>AI agents</strong> (agent harnessing, automated research, planning), <strong>reinforcement learning</strong> (meta-RL, generalization, sample efficiency, offline RL), and <strong>vision-language-action models</strong> for gameplay and screen-control agents.</p>
+      </div>
+    </div>
+    <div class="now-list">
+      <div class="now-card">
+        <div class="meta">Now · Krafton</div>
+        <h3>Distributed RL &amp; VLA on PUBG</h3>
+        <p>Large-scale distributed reinforcement learning and vision-language-action model training on PUBG, at the Gameplay AI Team.</p>
+      </div>
+      <div class="now-card">
+        <div class="meta">Recent · Open Source</div>
+        <h3>Prompt2Policy</h3>
+        <p>Released April 2026 — an LLM-powered system that turns natural-language behavior descriptions into trained RL policies.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-        <heading>Publications</heading>
+<!-- ── Featured Open Source ────────────────────────────── -->
+<section class="featured" id="open-source">
+  <div class="wrap reveal">
+    <span class="label">Featured · Open Source</span>
+    <h2>Describe a behavior. <em>Get a trained policy.</em></h2>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <span class="tag">Released Apr 2026</span>
+        <h3>Prompt2Policy</h3>
+        <p>Agentic engineering for reinforcement learning. An LLM-powered pipeline that writes reward functions, runs parallel PPO training across seeds &amp; configs, evaluates with a dual code/VLM judge, and auto-revises on failure — across MuJoCo and IsaacLab environments.</p>
+        <div class="feat-links">
+          <a href="https://github.com/krafton-ai/Prompt2Policy">Repository</a>
+          <a href="https://www.krafton.ai/blog/posts/2026-04-03-prompt-to-policy/prompt-to-policy_en.html">Blog</a>
+        </div>
+      </div>
+      <div class="feat-side">
+        <div class="num">P2P</div>
+        <div class="num-label">Open-sourced<br>at Krafton AI</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-	  <tr onmouseout="hypernerf_stop()" onmouseover="hypernerf_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-		      <a href="images/DC.png"><img src='images/DC.png' width="190"></a>
-              </div>
+<!-- ── Publications ─────────────────────────────────────── -->
+<section id="publications">
+  <div class="wrap reveal">
+    <span class="label">Selected Publications</span>
+    <h2>Research.</h2>
+    <div class="divider"></div>
+    <div class="pub-list">
 
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://openreview.net/forum?id=4HKjezHU-w8">
-                <papertitle> Decision ConvFormer: Local Filtering in MetaFormer is Sufficient for Decision Making </papertitle>
-              </a>
-              <br>
-              <a href="https://www.beanie00.com/"> Jeonghye Kim</a>, <strong>Suyoung Lee</strong>, <a href="https://sites.google.com/view/wjkim1202/"> Woojun Kim</a>, and <a href="https://sites.google.com/view/youngchulsung">Youngchul Sung</a>
+      <article class="pub">
+        <div class="pub-thumb contain"><a href="https://openreview.net/forum?id=3HpgVs22UJ"><img src="images/AQA.png" alt="Adaptive Q-Aid"></a></div>
+        <div>
+          <div class="pub-meta"><span>NeurIPS 2024</span></div>
+          <h3 class="pub-title"><a href="https://openreview.net/forum?id=3HpgVs22UJ">Adaptive Q-Aid for Conditional Supervised Learning in Offline Reinforcement Learning</a></h3>
+          <div class="pub-authors">Jeonghye Kim, <strong>Suyoung Lee</strong>, Woojun Kim, Youngchul Sung</div>
+          <div class="pub-venue">Neural Information Processing Systems · 2024</div>
+          <p class="pub-summary">QCS adaptively combines return-conditioned supervised learning with a Q-function — leaning on RCSL for optimal trajectories and on Q-aid for sub-optimal ones — to recover trajectory-stitching ability without sacrificing stability.</p>
+          <div class="pub-actions"><a href="https://arxiv.org/abs/2402.02017">arXiv</a><a href="https://openreview.net/forum?id=3HpgVs22UJ">OpenReview</a></div>
+        </div>
+      </article>
 
-              <br>
-              <em>International Conference on Learning Representations (ICLR)</em>, 2024  as <strong> Spotlight presentation (366/7262= 5.0%) </strong>
-	              <br>
-              <em>Foundation Models for Decision Making (FMDM) Workshop at NeurIPS</em>, 2023.
-              <br>
-              <a href="https://openreview.net/forum?id=af2c8EaKl8">pdf</a>
-              
-              <p></p>
-              <p> We propose Decision ConvFormer, a new decision-maker based on MetaFormer with three convolution filters for offline RL, which excels in decision-making by understanding local associations and has an enhanced generalization capability.</p>
-            </td>
-          </tr>
-		
-	  <tr onmouseout="hypernerf_stop()" onmouseover="hypernerf_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-		      <a href="images/sdvt.png"><img src='images/sdvt.png' width="190"></a>
-              </div>
+      <article class="pub">
+        <div class="pub-thumb"><a href="https://openreview.net/forum?id=4HKjezHU-w8"><img src="images/DC.png" alt="Decision ConvFormer"></a></div>
+        <div>
+          <div class="pub-meta"><span>ICLR 2024</span><span class="badge">Spotlight · 5.0%</span></div>
+          <h3 class="pub-title"><a href="https://openreview.net/forum?id=4HKjezHU-w8">Decision ConvFormer: Local Filtering in MetaFormer is Sufficient for Decision Making</a></h3>
+          <div class="pub-authors">Jeonghye Kim, <strong>Suyoung Lee</strong>, Woojun Kim, Youngchul Sung</div>
+          <div class="pub-venue">International Conference on Learning Representations · 2024</div>
+          <p class="pub-summary">A new MetaFormer-based decision-maker for offline RL using three convolution filters; excels at understanding local associations and generalizes better than prior decision transformers.</p>
+          <div class="pub-actions"><a href="https://openreview.net/forum?id=af2c8EaKl8">PDF</a></div>
+        </div>
+      </article>
 
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://openreview.net/forum?id=JX6UloWrmE">
-                <papertitle>Parameterizing Non-Parametric Meta-Reinforcement Learning Tasks via Subtask Decomposition </papertitle>
-              </a>
-              <br>
-              <strong>Suyoung Lee</strong>, Myungsik Cho, and <a href="https://sites.google.com/view/youngchulsung">Youngchul Sung</a>
+      <article class="pub">
+        <div class="pub-thumb"><a href="https://openreview.net/forum?id=JX6UloWrmE"><img src="images/sdvt.png" alt="SDVT"></a></div>
+        <div>
+          <div class="pub-meta"><span>NeurIPS 2023</span></div>
+          <h3 class="pub-title"><a href="https://openreview.net/forum?id=JX6UloWrmE">Parameterizing Non-Parametric Meta-Reinforcement Learning Tasks via Subtask Decomposition</a></h3>
+          <div class="pub-authors"><strong>Suyoung Lee</strong>, Myungsik Cho, Youngchul Sung</div>
+          <div class="pub-venue">Neural Information Processing Systems · 2023</div>
+          <p class="pub-summary">Enhances meta-RL generalization on non-parametrically varying tasks by decomposing them into elementary subtasks and conducting virtual training.</p>
+          <div class="pub-actions"><a href="https://openreview.net/forum?id=JX6UloWrmE">PDF</a><a href="https://github.com/suyoung-lee/SDVT">Code</a></div>
+        </div>
+      </article>
 
-              <br>
-              <em>Neural Information Processing Systems (NeurIPS)</em>, 2023.
-              <br>
-              <a href="https://openreview.net/forum?id=JX6UloWrmE&referrer=%5BAuthor%20Console%5D(%2Fgroup%3Fid%3DNeurIPS.cc%2F2023%2FConference%2FAuthors%23your-submissions)">pdf</a>
-	              /
-              <a href="https://github.com/suyoung-lee/SDVT">code</a>
-              <p></p>
-              <p> We enhance the generalization capability of meta-reinforcement learning on tasks with non-parametric variability by decomposing the tasks into elementary subtasks and conducting virtual training.</p>
-            </td>
-          </tr>
-		
-          <tr onmouseout="hypernerf_stop()" onmouseover="hypernerf_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-		      <a href="images/AIMDA.png"><img src='images/AIMDA.png' width="190"></a>
-              </div>
+      <article class="pub">
+        <div class="pub-thumb"><a href="https://openreview.net/forum?id=4HKjezHU-w8"><img src="images/AIMDA.png" alt="AIM-DA"></a></div>
+        <div>
+          <div class="pub-meta"><span>ICML Workshop 2022</span></div>
+          <h3 class="pub-title"><a href="https://openreview.net/forum?id=4HKjezHU-w8">Adaptive Intrinsic Motivation with Decision Awareness</a></h3>
+          <div class="pub-authors"><strong>Suyoung Lee</strong>, Sae-Young Chung</div>
+          <div class="pub-venue">Decision Awareness in RL Workshop @ ICML · 2022</div>
+          <p class="pub-summary">An intrinsic-reward coefficient adaptation scheme equipped with intrinsic-motivation awareness, adjusting the coefficient online to maximize extrinsic return.</p>
+          <div class="pub-actions"><a href="https://openreview.net/pdf?id=4HKjezHU-w8">PDF</a></div>
+        </div>
+      </article>
 
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://openreview.net/forum?id=4HKjezHU-w8">
-                <papertitle>Adaptive Intrinsic Motivation with Decision Awareness </papertitle>
-              </a>
-              <br>
-              <strong>Suyoung Lee</strong> and
-							<a href="http://itl.kaist.ac.kr/sychung/index.html">Sae-Young Chung</a>
+      <article class="pub">
+        <div class="pub-thumb"><a href="https://proceedings.neurips.cc/paper/2021/hash/e48e13207341b6bffb7fb1622282247b-Abstract.html"><img src="images/LDM.png" alt="LDM"></a></div>
+        <div>
+          <div class="pub-meta"><span>NeurIPS 2021</span></div>
+          <h3 class="pub-title"><a href="https://proceedings.neurips.cc/paper/2021/hash/e48e13207341b6bffb7fb1622282247b-Abstract.html">Improving Generalization in Meta-RL with Imaginary Tasks from Latent Dynamics Mixture</a></h3>
+          <div class="pub-authors"><strong>Suyoung Lee</strong>, Sae-Young Chung</div>
+          <div class="pub-venue">Neural Information Processing Systems · 2021</div>
+          <p class="pub-summary">Trains an RL agent on imaginary tasks generated from mixtures of learned latent dynamics, improving generalization to unseen test tasks.</p>
+          <div class="pub-actions"><a href="https://arxiv.org/pdf/2105.13524.pdf">PDF</a><a href="https://github.com/suyoung-lee/LDM">Code</a></div>
+        </div>
+      </article>
 
-              <br>
-              <em>Decision Awareness in Reinforcement Learning Workshop at ICML</em>, 2022.
-              <br>
-              <a href="https://openreview.net/pdf?id=4HKjezHU-w8">pdf</a>
-              
-              <p></p>
-              <p> We propose an intrinsic reward coefficient adaptation scheme equipped with intrinsic motivation awareness and adjusts the intrinsic reward coefficient online to maximize the extrinsic return.</p>
-            </td>
-          </tr>
+      <article class="pub">
+        <div class="pub-thumb"><a href="https://proceedings.neurips.cc/paper/2019/hash/e6d8545daa42d5ced125a4bf747b3688-Abstract.html"><img src="images/EBU.jpg" alt="EBU"></a></div>
+        <div>
+          <div class="pub-meta"><span>NeurIPS 2019</span></div>
+          <h3 class="pub-title"><a href="https://proceedings.neurips.cc/paper/2019/hash/e6d8545daa42d5ced125a4bf747b3688-Abstract.html">Sample-Efficient Deep Reinforcement Learning via Episodic Backward Update</a></h3>
+          <div class="pub-authors"><strong>Suyoung Lee</strong>, Sungik Choi, Sae-Young Chung</div>
+          <div class="pub-venue">Neural Information Processing Systems · 2019</div>
+          <p class="pub-summary">A computationally efficient recursive deep RL algorithm that propagates sparse and delayed rewards directly through all transitions of a sampled episode.</p>
+          <div class="pub-actions"><a href="https://arxiv.org/pdf/1805.12375.pdf">PDF</a><a href="https://github.com/suyoung-lee/Episodic-Backward-Update">Code</a></div>
+        </div>
+      </article>
 
-          <tr onmouseout="hypernerf_stop()" onmouseover="hypernerf_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-		      <a href='images/LDM.png'> <img src='images/LDM.png' width="190"> </a>
-              </div>
+    </div>
+  </div>
+</section>
 
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://proceedings.neurips.cc/paper/2021/hash/e48e13207341b6bffb7fb1622282247b-Abstract.html">
-                <papertitle>Improving Generalization in Meta-RL with Imaginary Tasks from Latent Dynamics Mixture</papertitle>
-              </a>
-              <br>
-              <strong>Suyoung Lee</strong> and
-							<a href="http://itl.kaist.ac.kr/sychung/index.html">Sae-Young Chung</a>
+<!-- ── Awards & Education ──────────────────────────────── -->
+<section id="awards">
+  <div class="wrap reveal">
+    <div class="col-2">
+      <div>
+        <span class="label">Awards</span>
+        <h2>Honors.</h2>
+        <div class="divider"></div>
+        <div class="award-item">
+          <div class="year">2024</div>
+          <h3><a href="https://ee.kaist.ac.kr/paper/">Outstanding Ph.D. Dissertation Award</a></h3>
+          <p><em>Meta-Reinforcement Learning with Imaginary Tasks</em> · KAIST EE</p>
+        </div>
+        <div class="award-item">
+          <div class="year">2018</div>
+          <h3>Qualcomm-KAIST Innovation Awards</h3>
+          <p>Paper competition for graduate students · Qualcomm</p>
+        </div>
+        <div class="award-item">
+          <div class="year">2017</div>
+          <h3>Un Chong-Kwan Scholarship</h3>
+          <p>Excellence in 2017 entrance examination · KAIST EE</p>
+        </div>
+      </div>
+      <div>
+        <span class="label">Education</span>
+        <h2>Path.</h2>
+        <div class="divider"></div>
+        <div class="edu-line">
+          <div class="edu-item">
+            <div class="when">2022 – 2024</div>
+            <div class="what">Ph.D., Electrical Engineering</div>
+            <div class="where">KAIST · Adv. Prof. <a href="https://sites.google.com/view/youngchulsung">Youngchul Sung</a></div>
+          </div>
+          <div class="edu-item">
+            <div class="when">2019 – 2022</div>
+            <div class="what">Ph.D. Candidate, Electrical Engineering</div>
+            <div class="where">KAIST · Adv. Prof. <a href="https://scholar.google.com/citations?user=k-o3JBIAAAAJ&amp;hl=ko&amp;oi=ao">Sae-Young Chung</a></div>
+          </div>
+          <div class="edu-item">
+            <div class="when">2017 – 2019</div>
+            <div class="what">M.S., Electrical Engineering</div>
+            <div class="where">KAIST · Adv. Prof. <a href="https://scholar.google.com/citations?user=k-o3JBIAAAAJ&amp;hl=ko&amp;oi=ao">Sae-Young Chung</a></div>
+          </div>
+          <div class="edu-item">
+            <div class="when">2012 – 2017</div>
+            <div class="what">B.S., Electrical Engineering</div>
+            <div class="where">KAIST</div>
+          </div>
+          <div class="edu-item">
+            <div class="when">2010 – 2012</div>
+            <div class="what">Hansung Science High School</div>
+            <div class="where">Seoul, Republic of Korea</div>
+          </div>
+          <div class="edu-item">
+            <div class="when">2007 – 2009</div>
+            <div class="what">Tashkent International School</div>
+            <div class="where">Tashkent, Uzbekistan</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-              <br>
-              <em>Neural Information Processing Systems (NeurIPS)</em>, 2021.
-              <br>
-              <a href="https://arxiv.org/pdf/2105.13524.pdf">pdf</a>
-              /
-              <a href="https://github.com/suyoung-lee/LDM">code</a>
-              <p></p>
-              <p> We train an RL agent with imaginary tasks generated from mixtures of learned latent dynamics to generalize to unseen test tasks.</p>
-            </td>
-          </tr>
+<!-- ── Coda · How I try to live ───────────────────────── -->
+<section id="coda">
+  <div class="wrap reveal">
+    <span class="label">Coda</span>
+    <h2>How I try to <em>live</em>.</h2>
+    <div class="divider"></div>
+    <div class="coda" style="margin-top:30px">
+      <div class="coda-img">
+        <img src="images/Life.jpg" alt="Meta-RL view of life">
+      </div>
+      <div class="coda-text">
+        <p>I view life as a meta-reinforcement learning task — reminiscent of MuJoCo's <em>Ant-direction</em>, where an agent learns to walk toward a hidden goal direction it can never observe directly.</p>
+        <p>Everyone has their own optimal life direction <em>T</em>: unique, often obscured. The objective is to maximize the cumulative reward</p>
+        <span class="eq">r = M · T,</span>
+        <p>the dot product of <em>M</em> — how we choose to live — and the unseen true direction <em>T</em>. Two things matter: the angle <em>θ</em> between them, and the magnitude <em>|M|</em>.</p>
+        <p>I was fortunate to have guidance from two advisors who instilled in me the importance of both — <strong>minimizing |θ|</strong> by choosing the right direction, and <strong>maximizing |M|</strong> by moving with conviction.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-          <tr onmouseout="hypernerf_stop()" onmouseover="hypernerf_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-		      <a href ='images/EBU.jpg'> <img src='images/EBU.jpg' width="190"></a>
-              </div>
+<!-- ── Aside · Hobby ──────────────────────────────────── -->
+<section id="aside">
+  <div class="wrap reveal">
+    <span class="label">Aside</span>
+    <h2>Off the clock — <em>vibe-coding</em> games.</h2>
+    <div class="divider"></div>
+    <p>The same agent harnessing I do at work, I do for fun on weekends — pair-programming with LLMs to ship small games end-to-end.</p>
+    <div class="aside-card">
+      <div class="aside-text">
+        <div class="tag-row">
+          <span class="tag">Side Project</span>
+          <span class="tag">1v1 Web Game</span>
+          <span class="tag">Live</span>
+        </div>
+        <h3>Stonecode</h3>
+        <p>A 1v1 web-based board game with hidden scoring rules — discover the pattern, crack the code. Built end-to-end with an agentic dev workflow: feature branches, parallel sub-agents for client / server / shared layers, and an automated PR-review loop.</p>
+        <div class="play-links">
+          <a href="https://stonecodegame.com/">Play →</a>
+          <a href="https://github.com/suyoung-lee/game_project">Source</a>
+        </div>
+      </div>
+      <a href="https://stonecodegame.com/" class="aside-img">
+        <img src="images/stonecode.png" alt="Stonecode — discover the hidden rules through play">
+      </a>
+    </div>
+  </div>
+</section>
 
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <a href="https://proceedings.neurips.cc/paper/2019/hash/e6d8545daa42d5ced125a4bf747b3688-Abstract.html">
-                <papertitle>Sample-Efficient Deep Reinforcement Learning via Episodic Backward Update</papertitle>
-              </a>
-              <br>
-              <strong>Suyoung Lee</strong>,
-							<a href="https://www.linkedin.com/in/sungik-choi-171a05137/?originalSubdomain=kr">Sungik Choi</a>, and
-							<a href="http://itl.kaist.ac.kr/sychung/index.html">Sae-Young Chung</a>
+<!-- ── Connect ──────────────────────────────────────────── -->
+<section class="connect" id="connect">
+  <div class="wrap reveal">
+    <span class="label">Connect</span>
+    <h2>Get in <em>touch</em>.</h2>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="ct-label">Personal</div>
+        <a href="mailto:suyounglee424@gmail.com">suyounglee424@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <div class="ct-label">Work</div>
+        <a href="mailto:suyoung.lee@krafton.com">suyoung.lee@krafton.com</a>
+      </div>
+      <div class="contact-item">
+        <div class="ct-label">GitHub</div>
+        <a href="https://github.com/suyoung-lee/">@suyoung-lee</a>
+      </div>
+      <div class="contact-item">
+        <div class="ct-label">Scholar</div>
+        <a href="https://scholar.google.com/citations?user=CWbdBy8AAAAJ&hl=en">Google Scholar</a>
+      </div>
+    </div>
+    <div class="foot">
+      <span>© Suyoung Lee · MMXXVI</span>
+      <span>Built with care · Seoul, KR</span>
+    </div>
+  </div>
+</section>
 
-              <br>
-              <em>Neural Information Processing Systems (NeurIPS)</em>, 2019.
-              <br>
-              <a href="https://arxiv.org/pdf/1805.12375.pdf">pdf</a>
-              /
-              <a href="https://github.com/suyoung-lee/Episodic-Backward-Update">code</a>
-              <p></p>
-              <p>A computationally efficient recursive deep reinforcement learning algorithm that allows sparse and delayed rewards to propagate directly through all transitions of the sampled episode.</p>
-            </td>
-          </tr>
+<script>
+// Sticky nav: hide on scroll-down, show on scroll-up
+(function(){
+  const nav = document.getElementById('topnav');
+  let last = 0;
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y > 80 && y > last) nav.classList.add('hidden');
+    else nav.classList.remove('hidden');
+    last = y;
+  }, {passive:true});
+})();
 
+// Section reveal on scroll
+(function(){
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
+  }, {threshold:.12, rootMargin:'0px 0px -60px 0px'});
+  els.forEach(el => io.observe(el));
+})();
 
-        </tbody></table>
+// Active nav link highlight
+(function(){
+  const links = document.querySelectorAll('.nav-links a');
+  const map = new Map();
+  links.forEach(a => { const id = a.getAttribute('href').slice(1); const sec = document.getElementById(id); if (sec) map.set(sec, a); });
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      const a = map.get(e.target);
+      if (!a) return;
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        a.classList.add('active');
+      }
+    });
+  }, {rootMargin:'-40% 0px -55% 0px'});
+  map.forEach((_, sec) => io.observe(sec));
+})();
+</script>
 
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-        <heading>Awards</heading>
-
-          <tr onmouseout="hypernerf_stop()" onmouseover="hypernerf_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-
-              <p></p>
-	      <p><strong>Outstanding Ph.D. Dissertation Award</strong> - Thesis: <em>Meta-Reinforcement Learning with Imaginary Tasks</em>, KAIST EE, 2024.</p>
-              <p>Qualcomm-KAIST Innovation Awards 2018 - paper competition awards for graduate students, Qualcomm, 2018.</p>
-              <p>Un Chong-Kwan Scholarship Award - for the achievement of excellence in the 2017 entrance examination, KAIST EE, 2017.</p>
-            </td>
-          </tr>
-        </tbody></table>
-
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-        <heading>Education</heading>
-
-          <tr onmouseout="hypernerf_stop()" onmouseover="hypernerf_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-
-              <p></p>
-              <p>2022~ 2024: Ph.D. in Electrical Engineering, KAIST, Daejeon, Korea (advisor: Prof. <a href="https://sites.google.com/view/youngchulsung">Youngchul Sung</a>). </p>
-	      <p>2019~2022: Ph.D. in Electrical Engineering, KAIST, Daejeon, Korea (advisor: Prof. <a href="http://itl.kaist.ac.kr/sychung/index.html">Sae-Young Chung</a>). </p>
-              <p>2017~2019: M.S. in Electrical Engineering, KAIST, Daejeon, Korea (advisor: Prof. <a href="http://itl.kaist.ac.kr/sychung/index.html">Sae-Young Chung</a>). </p>
-              <p>2012~2017: B.S. in Electrical Engineering, KAIST, Daejeon, Korea. </p>
-              <p>2010~2012: Hansung Science High School, Seoul, Korea. </p>
-	      <p>2007~2009: Tashkent International School, Tashkent, Uzbekistan. </p>
-            </td>
-          </tr>
-        </tbody></table>
-
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-        <heading>How I try to live</heading>
-
-          <tr onmouseout="hypernerf_stop()" onmouseover="hypernerf_start()">
-	<td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-		      <a href="images/Life.jpg"><img src='images/Life.jpg' width="190"></a>
-              </div>
-
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-
-              <p></p>
-              <p>I view life as a meta-reinforcement learning task, reminiscent of the MuJoCo Ant-direction. Everyone has their own unique, albeit often obscured, optimal life direction T. The objective of life is to maximize the cumulative reward r=M·T, defined as the dot product of our chosen direction M (how we decide to live) and the unseen true direction T. I was fortunate to have guidance from two professors who instilled in me the importance of minimizing the angle 
-∣θ∣ and maximizing the magnitude ∣M∣.</p>
-
-            </td>
-          </tr>
-        </tbody></table>
-	
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr>
-            <td style="padding:0px">
-              <br>
-              <p style="text-align:right;font-size:small;">
-                Website template from <a href="https://jonbarron.info/">here</a>.
-              </p>
-            </td>
-          </tr>
-        </tbody></table>
-
-      </td>
-    </tr>
-  </table>
 </body>
-
 </html>
